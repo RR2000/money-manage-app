@@ -81,9 +81,9 @@ describe('InstrumentsComponent', () => {
     page.symbol = 'NOPE';
     page.showPreview(iwda.isin);
     http.expectOne(r => r.url === '/api/instruments/preview')
-      .flush({message: 'Alpha Vantage non ha prezzi per questo simbolo'}, {status: 404, statusText: 'Not Found'});
+      .flush({message: 'Alpha Vantage has no prices for this symbol'}, {status: 404, statusText: 'Not Found'});
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('[role=alert]')?.textContent).toContain('non ha prezzi');
+    expect(fixture.nativeElement.querySelector('[role=alert]')?.textContent).toContain('has no prices');
     expect(page.busy()).toBe(false);
   });
 
